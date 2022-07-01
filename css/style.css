@@ -1,0 +1,53 @@
+.btn-wsp {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  line-height: 63px;
+  bottom: 25px;
+  right: 25px;
+  background: #25d366;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 35px;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  transition: all 300ms ease;
+}
+.separa-cita {
+  background-color: #57ccc3 !important;
+}
+.separa-cita a {
+  color: white !important;
+}
+/* .btn{
+	margin: 0;
+	padding: 0;
+	border:0;
+position: fixed;
+width: 60;
+height: 60;
+line-height: 63;
+bottom: 25px;
+right:25px;
+    background:#25d366;
+    color:#FFF;
+    border-radius:50px;
+    text-align:center;
+    font-size:35px;
+    box-shadow: 0px 1px 10px rgba(0,0,0,0.3);
+    z-index:100;
+
+
+
+	} */
+.btn-wsp:hover {
+  background: #20ba5a;
+}
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+  .btn-wsp {
+    width: 63px;
+    height: 63px;
+    line-height: 66px;
+  }
+}
