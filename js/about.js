@@ -41,7 +41,6 @@ $(document).ready(function () {
 
   initMenu();
   initMilestones();
-  initTestSlider();
 
   /* 
 
@@ -136,22 +135,5 @@ $(document).ready(function () {
     }
   }
 
-  /* 
-
-	5. Init Testimonials Slider
-
-	*/
-
-  function initTestSlider() {
-    if ($(".test_slider").length) {
-      var testSlider = $(".test_slider");
-      testSlider.owlCarousel({
-        items: 1,
-        autoplay: false,
-        loop: true,
-        dots: true,
-        smartSpeed: 1200,
-      });
-    }
-  }
+  
 });
