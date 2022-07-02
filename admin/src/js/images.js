@@ -1,31 +1,29 @@
-const contentInput = document.getElementById("contenido");
+const imageInput = document.getElementById("image");
 
 const resetInputs = () => {
-  contentInput.value = "";
+  imageInput.files[0] = undefined;
 };
 
 let typeString = "";
 const querystring = window.location.search;
 
 if (!querystring.includes("?type=")) {
-  typeString = "contact";
+  typeString = "client";
 } else {
   typeString = querystring.split("?type=")[1];
 }
 
-console.log({ typeString });
-
 const loadData = async () => {
-  const strings = await getStrings(typeString);
-  console.log(strings);
+  const images = await getImages(typeString);
+  console.log(images);
   createBasicTable({
-    data: strings,
+    data: images,
     columns: [
       {
         data: "label",
         title: "Objeto",
       },
-      { data: "content", title: "Contenido" },
+      { data: "image", title: "Imagen" },
       {
         data: "id",
         title: "Acciones",
@@ -49,31 +47,36 @@ const newRegister = () => {
 const edit = (id) => {
   action = "put";
   globalRow = getRow(myDataTable.rows().data(), id);
-  contentInput.value = globalRow.content;
+  imageInput.files[0] = undefined;
   openModal();
 };
 
 const remove = async (id) => {
-  await fbAxios.delete(`/services/${id}/.json`);
-  window.location = `/admin/strings.html?type=${typeString}`;
+  await fbAxios.delete(`/images/${id}/.json`);
+  window.location = `/admin/images.html?type=${typeString}`;
 };
 
 const save = async () => {
-  const content = contentInput.value;
+  let image;
 
   Swal.showLoading();
 
+  if (imageInput.files[0]) {
+    image = await uploadImageToCloudinary(imageInput.files[0]);
+  }
+
   if (action == "put") {
     const { data } = await fbAxios.put(`strings/${globalRow.id}/.json`, {
-      content,
+      image: image || globalRow.image,
       label: globalRow.label,
       type: typeString,
     });
   } else {
-    // const { data } = await fbAxios.post(`strings.json`, {
-    //   content,
-    //   type: typeString,
-    // });
+    const { data } = await fbAxios.post(`strings.json`, {
+      image,
+      label: globalRow.label,
+      type: typeString,
+    });
   }
   window.location = `/admin/strings.html?type=${typeString}`;
 };

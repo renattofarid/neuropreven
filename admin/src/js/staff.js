@@ -1,30 +1,31 @@
-const titleInput = document.getElementById("title");
-const contentInput = document.getElementById("contenido");
+const nameInput = document.getElementById("name");
+const descriptionInput = document.getElementById("description");
+const profileInput = document.getElementById("profile");
 const imageInput = document.getElementById("image");
 
 const resetInputs = () => {
-  titleInput.value = "";
-  contentInput.value = "";
+  nameInput.value = "";
+  descriptionInput.value = "";
+  profileInput.value = "";
   imageInput.files[0] = undefined;
 };
 
 const loadData = async () => {
-  const services = await getServices();
+  const staff = await getStaff();
   createBasicTable({
-    data: services,
+    data: staff,
     columns: [
       {
-        data: "title",
-        title: "Título",
+        data: "name",
+        title: "Nombre",
       },
-      { data: "content", title: "Contenido" },
+      { data: "profile", title: "Perfil" },
+      { data: "description", title: "Description" },
       {
         data: "image",
         title: "Imagen",
         render: (data, type, row, meta) => `
-            <div style="background-color: #5F327B; border-radius: 50%; padding: 10px;">
-                <img src="${row.image}" alt="${row.title}" class="img-fluid" width="100px"/>
-            </div>
+            <img src="${row.image}" alt="${row.name}" class="img-fluid" width="100px"/>
         `,
       },
       {
@@ -50,20 +51,22 @@ const newRegister = () => {
 const edit = (id) => {
   action = "put";
   globalRow = getRow(myDataTable.rows().data(), id);
-  titleInput.value = globalRow.title;
-  contentInput.value = globalRow.content;
+  nameInput.value = globalRow.name;
+  descriptionInput.value = globalRow.description;
+  profileInput.value = globalRow.profile;
   imageInput.files[0] = undefined;
   openModal();
 };
 
 const remove = async (id) => {
-  await fbAxios.delete(`/services/${id}/.json`);
-  window.location = "/admin/servicios.html";
+  await fbAxios.delete(`/staff/${id}/.json`);
+  window.location = "/admin/staff.html";
 };
 
 const save = async () => {
-  const title = titleInput.value;
-  const content = contentInput.value;
+  const name = nameInput.value;
+  const description = descriptionInput.value;
+  const profile = profileInput.value;
   let image;
 
   Swal.showLoading();
@@ -73,17 +76,19 @@ const save = async () => {
   }
 
   if (action == "put") {
-    const { data } = await fbAxios.put(`services/${globalRow.id}/.json`, {
-      title,
-      content,
+    const { data } = await fbAxios.put(`staff/${globalRow.id}/.json`, {
+      name,
+      description,
+      profile,
       image: image || globalRow.image,
     });
   } else {
-    const { data } = await fbAxios.post(`services.json`, {
-      title,
-      content,
+    const { data } = await fbAxios.post(`staff.json`, {
+      name,
+      description,
+      profile,
       image,
     });
   }
-  window.location = "/admin/servicios.html";
+  window.location = "/admin/staff.html";
 };
