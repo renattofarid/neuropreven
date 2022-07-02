@@ -42,18 +42,6 @@ const deleteAxios = async (url) => {
   return data;
 };
 
-const getPosts = async () => {
-  const data = await getAxios("/posts.json");
-  return Object.entries(data).map(([uid, value]) => [
-    value.title || "",
-    value.intro || "",
-    value.content || "",
-    value.image || "",
-    value.data || "",
-    uid || "asd",
-  ]);
-};
-
 var myModal = new bootstrap.Modal(document.getElementById("myModal"), {
   keyboard: false,
 });

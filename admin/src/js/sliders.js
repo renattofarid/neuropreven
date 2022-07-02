@@ -9,13 +9,12 @@ const resetInputs = () => {
 const loadData = async () => {
   const sliders = await getSliders();
   console.log(sliders);
-  return;
   createBasicTable({
     data: sliders,
     columns: [
       {
-        data: "title",
-        title: "Título",
+        data: "value",
+        title: "Objeto",
       },
       { data: "content", title: "Contenido" },
       {
