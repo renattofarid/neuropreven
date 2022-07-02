@@ -50,7 +50,6 @@ $(document).ready(function()
 	initDatePicker();
 	initSelect();
 	initMilestones();
-	initTestSlider();
 
 	/* 
 
@@ -241,7 +240,25 @@ $(document).ready(function()
 
 	*/
 
-	function initTestSlider() {
+	let testSlider = document.querySelector('#testSlider');
+	console.log(testSlider);
+	getTestimonials().then((result) => {
+		let template = ``;
+		for (const test of result) {
+			template += 
+			`<div class="owl-item">
+				<div class="test_item text-center">
+					<div class="test_text">
+						<p>“${test.content}”.</p>
+					</div>
+					<div class="test_info d-flex flex-row align-items-center justify-content-center">
+						<div class="test_text">${test.author}, <span>${test.type}</span></div>
+					</div>
+				</div>
+			</div>`;
+		}
+		testSlider.innerHTML = template;
+		function initTestSlider() {
 		if ($(".test_slider").length) {
 		  var testSlider = $(".test_slider");
 		  testSlider.owlCarousel({
@@ -253,5 +270,39 @@ $(document).ready(function()
 		  });
 		}
 	  }
+	  initTestSlider();
+	}).catch((err) => {
+		console.log(err);
+	});
+	getHomeServices().then((result)=>{
+		let servicioUno = document.querySelector('#servicio1');
+		let servicioDos = document.querySelector('#servicio2');
+		let servicioTres = document.querySelector('#servicio3');
+		servicioUno.innerHTML =
+		`<div  class="icon_container d-flex flex-column align-items-center justify-content-center ml-auto mr-auto">
+			<div class="icon"><img src="images/icon_11.svg"></div>
+		</div>
+		<div class="service_title">${result[0].title} </div>
+		<div class="service_text">
+			<p>${result[0].content}</p>
+		</div>`;
+		servicioDos.innerHTML =
+		`<div  class="icon_container d-flex flex-column align-items-center justify-content-center ml-auto mr-auto">
+			<div class="icon"><img src="images/icon_13.svg"></div>
+		</div>
+		<div class="service_title">${result[1].title} </div>
+		<div class="service_text">
+			<p>${result[0].content}</p>
+		</div>`;
+		servicioTres.innerHTML =
+		`<div  class="icon_container d-flex flex-column align-items-center justify-content-center ml-auto mr-auto">
+			<div class="icon"><img src="images/icon_10.svg"></div>
+		</div>
+		<div class="service_title">${result[2].title} </div>
+		<div class="service_text">
+			<p>${result[0].content}</p>
+		</div>`;
+	}).catch((err)=>{console.log(err)});
+	
 
 });

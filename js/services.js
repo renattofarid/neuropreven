@@ -93,4 +93,30 @@ $(document).ready(function()
 		});
 	}
 
+	getServices().then((servicios)=>{
+		let rowServices = document.querySelector('#rowServices');
+		let template = ``;
+		for (const service of servicios) {
+			template += 
+			`<div class="col-xl-4 col-md-6 service_col">
+				<div class="service text-center">
+					<div class="service">
+						<div class="icon_container d-flex flex-column align-items-center justify-content-center ml-auto mr-auto">
+							<div class="icon"><img src="${service.image}"></div>
+						</div>
+						<div class="service_title">${service.title}</div>
+						<div class="service_text">
+							<p>${service.content}</p>
+						</div>
+					</div>
+				</div>
+			</div>`
+		}
+		rowServices.innerHTML = template;
+	}).catch((err)=>{console.log(err)});
+
+	getStaff().then((result)=>{
+		console.log(result)
+	}).catch((err)=>{console.log(err)})
+
 });
