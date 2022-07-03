@@ -32,12 +32,14 @@ const getStaff = async () => {
   return changeToArray(data);
 };
 
-const getStrings = async (type) => {
+const getStrings = async (type, likeObject = false) => {
   const { data } = await fbAxios.get("strings.json");
 
   let strings = changeToArray(data);
 
   if (!type) return strings;
+
+  if (likeObject) return strings;
 
   return strings.filter((s) => s.type === type);
 };
@@ -45,17 +47,11 @@ const getStrings = async (type) => {
 const getImages = async (type) => {
   const { data } = await fbAxios.get("images.json");
 
-  let strings = changeToArray(data);
+  let images = changeToArray(data);
 
-  if (!type) return strings;
+  if (!type) return images;
 
-  return strings.filter((s) => s.type === type);
-};
-
-const getSliders = async () => {
-  const { data } = await fbAxios.get("labels.json");
-
-  return changeToArray2(data);
+  return images.filter((s) => s.type == type);
 };
 
 const changeToArray = (object = {}) => {

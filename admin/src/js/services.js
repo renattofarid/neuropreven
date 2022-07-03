@@ -21,11 +21,14 @@ const loadData = async () => {
       {
         data: "image",
         title: "Imagen",
-        render: (data, type, row, meta) => `
-            <div style="background-color: #5F327B; border-radius: 50%; padding: 10px;">
-                <img src="${row.image}" alt="${row.title}" class="img-fluid" width="100px"/>
-            </div>
-        `,
+        render: (data, type, row, meta) => {
+          if (!row.image) return "";
+          return `
+          <div class="d-flex justify-content-center align-items-center" style="background-color: #5F327B; border-radius: 50%; padding: 10px;">
+              <img src="${row.image}" alt="${row.title}" class="img-fluid" width="100px"/>
+          </div>
+          `;
+        },
       },
       {
         data: "id",

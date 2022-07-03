@@ -46,28 +46,59 @@ export class MySidebar extends HTMLElement {
             data-parent="#accordionSidebar"
           >
             <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="/admin/home-servicios.html">Sliders</a>
-              <a class="collapse-item" href="/admin/home-servicios.html">Servicios</a>
+            <a class="collapse-item" href="/admin/strings.html?type=slider">Textos de Sliders</a>
+            <a class="collapse-item" href="/admin/images.html?type=slider">Imágenes de Sliders</a>
+            <a class="collapse-item" href="/admin/strings.html?type=welcome">Welcome</a>
+            <a class="collapse-item" href="/admin/testimonios.html">Testimonios</a>
+            <a class="collapse-item" href="/admin/home-servicios.html">Servicios</a>
+          </div>
+        </li> 
+      
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            href="#"
+            data-toggle="collapse"
+            data-target="#collapseThree"
+            aria-expanded="true"
+            aria-controls="collapseThree"
+          >
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Nosotros</span>
+          </a>
+          <div
+            id="collapseThree"
+            class="collapse"
+            aria-labelledby="headingTwo"
+            data-parent="#accordionSidebar"
+          >
+            <div class="bg-white py-2 collapse-inner rounded">
+              <a class="collapse-item" href="/admin/strings.html?type=about">Textos</a>
+              <a class="collapse-item" href="/admin/images.html?type=client">Clientes</a>
+              <a class="collapse-item" href="/admin/staff.html">Staff</a>
+            </div>
           </div>
         </li> 
 
       <!-- Nav Item - Charts -->
+      <li class="nav-item">
+      <a class="nav-link" href="/admin/servicios.html">
+      <i class="fas fa-fw fa-cog"></i>
+      <span>Servicios</span></a
+      >
+      </li>
+     
       <li class="nav-item">
         <a class="nav-link" href="/admin/posts.html">
           <i class="fas fa-fw fa-cog"></i>
           <span>Posts</span></a
         >
       </li>
+      
       <li class="nav-item">
-        <a class="nav-link" href="/admin/testimonios.html">
+        <a class="nav-link" href="/admin/strings.html?type=contact">
           <i class="fas fa-fw fa-cog"></i>
-          <span>Testimonios</span></a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/admin/servicios.html">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Servicios</span></a
+          <span>Contacto</span></a
         >
       </li>
 
