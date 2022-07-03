@@ -52,12 +52,6 @@ const getImages = async (type) => {
   return images.filter((s) => s.type == type);
 };
 
-const getSliders = async () => {
-  const { data } = await fbAxios.get("labels.json");
-
-  return changeToArray2(data);
-};
-
 const changeToArray = (object = {}) => {
   return Object.entries(object).map(([id, value]) => ({ id, ...value }));
 };
