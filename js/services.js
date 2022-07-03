@@ -114,9 +114,6 @@ $(document).ready(function()
 		}
 		rowServices.innerHTML = template;
 	}).catch((err)=>{console.log(err)});
-
-	getStaff().then((result)=>{
-		console.log(result)
-	}).catch((err)=>{console.log(err)})
+	
 
 });

@@ -135,5 +135,36 @@ $(document).ready(function () {
     }
   }
 
+  getStaff().then((team)=>{
+		console.log(team)
+    let teams = document.querySelector('#teams');
+    let template = ``;
+    for (const member of team) {
+      template += 
+      `<div class="col-lg-6 team_col">
+        <div class="team_item text-center d-flex flex-column aling-items-center">
+          <div class="team_image"><img src="${member.image}" alt=""></div>
+          <div class="team_content text-center">
+            <div class="team_name"><a href="#">${member.name}</a></div>
+            <div class="team_title">${member.profile}<br>
+              <p>
+                <a class="btn btn-outline-info btn-sm" data-toggle="collapse" href="#no${member.id}" role="button" aria-expanded="false" aria-controls="no${member.id}">
+                  <i class="fas fa-angle-down"></i>
+                </a>
+              </p>
+              <div class="collapse" id="no${member.id}">
+                <div class="card card-body mt-1">
+                ${member.description}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      `;
+      teams.innerHTML = template;
+    }
+	}).catch((err)=>{console.log(err)})
+
   
 });

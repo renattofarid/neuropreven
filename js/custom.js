@@ -239,6 +239,50 @@ $(document).ready(function()
 	8. Init Testimonials Slider
 
 	*/
+	/**
+		getStrings ->  about,contact,slider,welcome
+		getImages -> slider, client
+	 */
+	getImages('slider').then(async (result1) => {
+		console.log(result);
+		let template = ``;
+		for (const res1 of result1) {
+			template += 
+			`<div class="owl-item">
+			<div class="background_image" style="background-image:url(${res1.image})"></div>
+			`;
+			await getStrings('slider').then((result2) => {
+				console.log(result);
+				template += 
+				`<div class="home_container">
+						<div class="container">
+							<div class="row">
+								<div class="col">
+									<div class="home_content">
+										<div class="home_subtitle">N°1 En Neurología Preventiva</div>
+										<div class="home_title">Ama tu Cerebro</div>
+										<div class="home_text">
+											<p>Nuestro objetivo es realizar prevención, diagnóstico, tratamiento y recuperación de enfermedades neurológicas</p>
+										</div>
+										<div class="home_buttons d-flex flex-row align-items-center justify-content-start">
+											<div class="button button_1 trans_200"><a href="#">+info</a></div>
+											<div class="button button_2 trans_200 separa-cita"><a href="https://api.whatsapp.com/send?phone=51924688174&text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Neuropreven">Separa tu Cita</a></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				`;
+			});
+		}
+		console.log(template);
+	}).catch((err) => {
+		
+	});
+
+	
 
 	let testSlider = document.querySelector('#testSlider');
 	console.log(testSlider);
@@ -292,7 +336,7 @@ $(document).ready(function()
 		</div>
 		<div class="service_title">${result[1].title} </div>
 		<div class="service_text">
-			<p>${result[0].content}</p>
+			<p>${result[1].content}</p>
 		</div>`;
 		servicioTres.innerHTML =
 		`<div  class="icon_container d-flex flex-column align-items-center justify-content-center ml-auto mr-auto">
@@ -300,7 +344,7 @@ $(document).ready(function()
 		</div>
 		<div class="service_title">${result[2].title} </div>
 		<div class="service_text">
-			<p>${result[0].content}</p>
+			<p>${result[2].content}</p>
 		</div>`;
 	}).catch((err)=>{console.log(err)});
 	
