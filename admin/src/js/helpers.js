@@ -1,55 +1,17 @@
+var myDataTable;
 var formModal = document.querySelector("#formModal");
-formModal.addEventListener("submit", (e) => {
-  e.preventDefault();
-  save();
-});
-
-moment.locale("es");
-
-const postAxios = async (url, body) => {
-  const { data } = await axios({
-    method: "post",
-    url: "https://neuropreven-c74b9-default-rtdb.firebaseio.com" + url,
-    data: body,
-  });
-  console.log(data);
-  return data;
-};
-
-const getAxios = async (url) => {
-  const { data } = await axios.get(
-    "https://neuropreven-c74b9-default-rtdb.firebaseio.com" + url
-  );
-
-  return data;
-};
-
-const putAxios = async (url, body) => {
-  const { data } = await axios({
-    method: "put",
-    url: "https://neuropreven-c74b9-default-rtdb.firebaseio.com" + url,
-    data: body,
-  });
-
-  return data;
-};
-
-const deleteAxios = async (url) => {
-  const { data } = await axios.delete(
-    "https://neuropreven-c74b9-default-rtdb.firebaseio.com" + url
-  );
-
-  return data;
-};
-
+let action = "post";
+let globalRow = null;
 var myModal = new bootstrap.Modal(document.getElementById("myModal"), {
   keyboard: false,
 });
 
-var myDataTable;
+moment.locale("es");
 
-let action = "post";
-let globalRow = null;
+formModal.addEventListener("submit", (e) => {
+  e.preventDefault();
+  save();
+});
 
 const openModal = () => {
   myModal.show();
@@ -69,6 +31,9 @@ const createBasicTable = ({ data, columns, columnDefs = [] }) => {
     data,
     columns,
     columnDefs,
+    language: {
+      url: "https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json",
+    },
   });
 };
 
@@ -97,18 +62,6 @@ const uploadImageToCloudinary = async (file) => {
     formData
   );
   return data.secure_url;
-};
-
-const getIdx = (data, uid, position) => {
-  let e = null;
-  for (let index = 0; index < data.length; index++) {
-    const element = data[index];
-    if (element[position] == uid) {
-      e = index;
-      break;
-    }
-  }
-  return e;
 };
 
 const getRow = (array = [], id) => {

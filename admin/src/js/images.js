@@ -23,7 +23,16 @@ const loadData = async () => {
         data: "label",
         title: "Objeto",
       },
-      { data: "image", title: "Imagen" },
+      {
+        data: "image",
+        title: "Imagen",
+        render: (data, type, row, meta) => {
+          if (!row.image) return "";
+          return `
+            <img src="${row.image}" alt="${row.label}" class="img-fluid" width="100px"/>
+        `;
+        },
+      },
       {
         data: "id",
         title: "Acciones",

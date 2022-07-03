@@ -45,11 +45,11 @@ const getStrings = async (type) => {
 const getImages = async (type) => {
   const { data } = await fbAxios.get("images.json");
 
-  let strings = changeToArray(data);
+  let images = changeToArray(data);
 
-  if (!type) return strings;
+  if (!type) return images;
 
-  return strings.filter((s) => s.type === type);
+  return images.filter((s) => s.type == type);
 };
 
 const getSliders = async () => {
