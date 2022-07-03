@@ -32,12 +32,14 @@ const getStaff = async () => {
   return changeToArray(data);
 };
 
-const getStrings = async (type) => {
+const getStrings = async (type, likeObject = false) => {
   const { data } = await fbAxios.get("strings.json");
 
   let strings = changeToArray(data);
 
   if (!type) return strings;
+
+  if (likeObject) return strings;
 
   return strings.filter((s) => s.type === type);
 };
