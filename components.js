@@ -139,7 +139,7 @@ class FooterElement extends HTMLElement {
         <!-- Newsletter -->
 
         <div class="newsletter">
-            <div class="parallax_background parallax-window" style="background-image: url('images/newsletter.jpg')" data-parallax="scroll" data-image-src="" data-speed="0.8"></div>
+            <div class="parallax_background parallax-window"  data-image-src="images/newsletter.jpg" data-parallax="scroll" data-image-src="" data-speed="0.8"></div>
             <div class="container">
                 <div class="row">
                     <div class="col text-center">

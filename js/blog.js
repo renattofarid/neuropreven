@@ -93,4 +93,48 @@ $(document).ready(function()
 		});
 	}
 
+	getPosts() .then((result) => {
+		let blogpost = document.querySelector('#blogpost');
+		let template = ``;
+		const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre"];
+		for (let i = 0; i < result.length; i++) {
+			let date = new Date(result[i].date)
+			let dia = date.getDay()
+			let mes = date.getMonth()
+			let ano = date.getFullYear()
+			template += 
+			`<div class="blog_post">
+				<div class="blog_post_image"><img src="${result[i].image}" alt=""></div>
+				<div class="blog_post_date d-flex flex-column align-items-center justify-content-center">
+					<div class="date_day">${dia}</div>
+					<div class="date_month">${meses[mes]}</div>
+					<div class="date_year">${ano}</div>
+				</div>
+				<div class="blog_post_title"><a href="#">${result[i].title}</a></div>
+				<div class="blog_post_info">
+					<ul class="d-flex flex-row align-items-center justify-content-center">
+					</ul>
+				</div>
+				<div class="blog_post_text text-center">
+					<p>${result[i].intro}</p>
+				</div>
+				<div class="collapse" id="post${i}">
+					<div class="blog_post_text text-center">
+						<p>
+						${result[i].content}
+						</p>
+					</div>
+				</div>
+				<div class="blog_post_button text-center">
+					<div class="button button_1 ml-auto mr-auto">
+						<a data-toggle="collapse" href="#post${i}" role="button" aria-expanded="false" aria-controls="post${i}" id="btnPost${i}" onclick="changeText('btnPost${i}')">
+							leer mas
+						</a>
+					</div>
+				</div>
+			</div>
+			`;
+		};
+		blogpost.innerHTML = template;
+	});
 });

@@ -164,7 +164,44 @@ $(document).ready(function () {
       `;
       teams.innerHTML = template;
     }
-	}).catch((err)=>{console.log(err)})
+	}).catch((err)=>{console.log(err)});
+
+  
+
+  getStrings('about', true) .then((result) => {
+    let mision = document.querySelector('#mision');
+    let vision = document.querySelector('#vision');
+    mision.innerHTML = `<p>${result.mision.content}</p>`;
+    vision.innerHTML = `<p>${result.vision.content}</p>`;
+	}).then(() => {
+    getImages('client') .then((result) => {
+      let extraContent = document.querySelector('#extraContent');
+      let template = ``;
+      for (const img of result) {
+        template += 
+        `<div class="extra_text d-flex justify-content-center align-items-center">
+          <img src="${img.image}" width="280" height="120">
+        </div>`
+      };
+      extraContent.innerHTML = `<div class="extra">
+      <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/extra.jpg" data-speed="0.8"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="extra_container d-flex flex-row align-items-start justify-content-end">
+              <div class="extra_content" id="extraContent">
+                `+template+`</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>`;
+    }).catch((err) => {
+      console.log(err);
+    });
+  }).catch((err) => {
+    
+  });
 
   
 });
