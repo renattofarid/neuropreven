@@ -25,6 +25,7 @@
 
     <!-- Custom styles for this template-->
     <link href="/admin/css/sb-admin-2.min.css" rel="stylesheet" />
+    <script src="/admin/src/js/guard.js"></script>
   </head>
 
   <body class="bg-gradient-primary">
@@ -36,18 +37,23 @@
             <div class="card-body p-0">
               <!-- Nested Row within Card Body -->
               <div class="row">
-                <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                <div
+                  class="col-lg-6 d-none d-lg-block bg-login-image"
+                  style="
+                    background-image: url(https://pbs.twimg.com/profile_images/1398347372946673672/GfHDTRWj_400x400.jpg);
+                  "
+                ></div>
                 <div class="col-lg-6">
                   <div class="p-5">
                     <div class="text-center">
                       <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                     </div>
-                    <form class="user">
+                    <form class="user" id="loginForm">
                       <div class="form-group">
                         <input
                           type="email"
                           class="form-control form-control-user"
-                          id="exampleInputEmail"
+                          id="email"
                           aria-describedby="emailHelp"
                           placeholder="Enter Email Address..."
                         />
@@ -56,16 +62,16 @@
                         <input
                           type="password"
                           class="form-control form-control-user"
-                          id="exampleInputPassword"
+                          id="password"
                           placeholder="Password"
                         />
                       </div>
-                      <a
-                        href="index.html"
+                      <button
+                        type="submit"
                         class="btn btn-primary btn-user btn-block"
                       >
                         Ingresar
-                      </a>
+                      </button>
                       <hr />
                     </form>
                   </div>
@@ -86,5 +92,13 @@
 
     <!-- Custom scripts for all pages-->
     <script src="/admin/js/sb-admin-2.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"
+      integrity="sha512-xIPqqrfvUAc/Cspuj7Bq0UtHNo/5qkdyngx6Vwt+tmbvTLDszzXM0G6c91LXmGrRx8KEPulT+AfOOez+TeVylg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="/admin/src/js/login.js"></script>
   </body>
 </html>

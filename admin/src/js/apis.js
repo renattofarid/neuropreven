@@ -35,20 +35,19 @@ const getStaff = async () => {
 const getStrings = async (type, likeObject = false) => {
   const { data } = await fbAxios.get("strings.json");
 
-  if (!type) return strings;
+  if (!type) return data;
 
-  if (likeObject) {
-    let strings = {};
-    Object.entries(data).forEach(([id, value]) => {
-      if (value.type != type) return;
-      strings[id] = value;
-    });
-    return strings;
-  }
+  let stringsObj = {};
+  Object.entries(data).forEach(([id, value]) => {
+    if (value.type != type) return;
+    stringsObj[id] = value;
+  });
 
-  let strings = changeToArray(data);
+  if (likeObject) return stringsObj;
 
-  return strings.filter((s) => s.type === type);
+  stringsArray = changeToArray(stringsObj);
+
+  return stringsArray;
 };
 
 const getImages = async (type) => {
