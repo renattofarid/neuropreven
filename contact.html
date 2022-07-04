@@ -1,173 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>NeuroPreven</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Dr PRO template project">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="styles/bootstrap-4.1.2/bootstrap.min.css">
-<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="styles/contact.css">
-<link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
-<link rel="icon" href="img/fav-icon.png" type="image/x-icon" />
-<link rel="stylesheet" href="css/style.css">
-  <!--Icon-Font-->
-  <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
-  <script src="components.js"></script>
-</head>
-<body>
+  <head>
+    <title>NeuroPreven</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Dr PRO template project" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="styles/bootstrap-4.1.2/bootstrap.min.css"
+    />
+    <link
+      href="plugins/font-awesome-4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" type="text/css" href="styles/contact.css" />
+    <link rel="stylesheet" type="text/css" href="styles/main_styles.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="styles/contact_responsive.css"
+    />
+    <link rel="icon" href="img/fav-icon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="css/style.css" />
+    <!--Icon-Font-->
+    <script
+      src="https://kit.fontawesome.com/eb496ab1a0.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="super_container">
+      <!-- Header -->
 
-<div class="super_container">
-	
-	<!-- Header -->
+      <header-element contacto="active"></header-element>
 
-	<header-element contacto="active"></header-element>
+      <!-- Menu -->
 
-	<!-- Menu -->
+      <menu-element></menu-element>
 
-	<menu-element></menu-element>
+      <!-- Home -->
 
-	<!-- Home -->
+      <start-section
+        data-src="images/contact.jpg"
+        home-title="Contacto"
+        home-text=""
+      ></start-section>
 
-	<start-section
-		data-src="images/contact.jpg"	
-		home-title="Contacto"
-		home-text=""
-	></start-section>
+      <!-- Contact -->
 
-	<!-- Contact -->
+      <div class="contact">
+        <div class="container">
+          <div class="row">
+            <!-- Contact Form -->
+            <div class="col-lg-6">
+              <div class="contact_form_container">
+                <div class="contact_form_title">Programa una Cita</div>
+                <appointment-form></appointment-form>
+              </div>
+            </div>
 
-	<div class="contact">
-		<div class="container">
-			<div class="row">
+            <!-- Contact Content -->
+            <div class="col-lg-5 offset-lg-1 contact_col">
+              <div class="contact_content">
+                <div class="contact_content_title">
+                  Bienvenido a nuestro Centro
+                </div>
+                <div class="contact_content_text">
+                  <p>
+                    Nuestro objetivo es realizar prevención, diagnóstico,
+                    tratamiento y recuperación de enfermedades neurológicas
+                  </p>
+                </div>
+                <div
+                  class="direct_line d-flex flex-row align-items-center justify-content-start"
+                >
+                  <div class="direct_line_title text-center">Línea Directa</div>
+                  <div class="direct_line_num text-center">+51 924 688 174</div>
+                </div>
+                <div class="contact_info">
+                  <ul>
+                    <li
+                      class="d-flex flex-row align-items-start justify-content-start"
+                    >
+                      <div>Dirección</div>
+                      <div class="ml-3" id="direccion"></div>
+                    </li>
+                    <li
+                      class="d-flex flex-row align-items-start justify-content-start"
+                    >
+                      <div>Teléfono</div>
+                      <div class="ml-3" id="telefono"></div>
+                    </li>
+                    <li
+                      class="d-flex flex-row align-items-start justify-content-start"
+                    >
+                      <div>Correo</div>
+                      <div class="ml-3" id="correo"></div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="contact_social">
+                  <ul
+                    class="d-flex flex-row align-items-center justify-content-start"
+                  ></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row google_map_row">
+            <div class="col">
+              <!-- Contact Map -->
 
-				<!-- Contact Form -->
-				<div class="col-lg-6">
-					<div class="contact_form_container">
-						<div class="contact_form_title">Programa una Cita</div>
-						<form action="mailto:informes@neuropreven.com" class="contact_form" id="contact_form">
-							<div class="d-flex flex-row align-items-start justify-content-between flex-wrap">
-								<input type="text" class="contact_input" placeholder="Nombre" required="required">
-								<input type="email" class="contact_input" placeholder="E-mail" required="required">
-								<input type="tel" class="contact_input" placeholder="Movil" required="required">
-								<select class="contact_select contact_input" required>
-									<option disabled="" selected="" value="">Especialidad</option>
-									<option>Enfermedades cerebrovasculares</option>
-									<option>Demencias (Alzheimer, Vascular)</option>
-									<option>Enfermedades desmielinizantes (Esclerosis múltiple)</option>
-									<option>Enfermedades del movimiento (Parkinson)</option>
-									<option>Enfermedades neuromusculares</option>
-									<option>Epilepsias</option>
-									<option>Cefaleas</option>
-									<option>Trastornos del sueño</option>
-									<option>Neurología general</option>
-								</select>
-								<select class="contact_select contact_input"required="required">
-										<option disabled="" selected="">Doctor</option>
-										<option>Dr. Danny Barrientos Iman</option>
-										<option>Dra. Yesenia Núñez Coronado</option>
-									</select>
-								
-							</div>
-							<button class="button button_1 contact_button trans_200">Separa tu Cita</button>
-						</form>
-					</div>
-				</div>
+              <div class="contact_map">
+                <!-- Google Map -->
 
-				<!-- Contact Content -->
-				<div class="col-lg-5 offset-lg-1 contact_col">
-					<div class="contact_content">
-						<div class="contact_content_title">Bienvenido a nuestro Centro</div>
-						<div class="contact_content_text">
-							<p>Nuestro objetivo es realizar prevención, diagnóstico, tratamiento y recuperación de enfermedades neurológicas</p>
-						</div>
-						<div class="direct_line d-flex flex-row align-items-center justify-content-start">
-							<div class="direct_line_title text-center">Línea Directa</div>
-							<div class="direct_line_num text-center">+51 924 688 174</div>
-						</div>
-						<div class="contact_info">
-							<ul>
-								<li class="d-flex flex-row align-items-start justify-content-start">
-									<div>Dirección</div>
-									<div class="ml-3" id="direccion"></div>
-								</li>
-								<li class="d-flex flex-row align-items-start justify-content-start">
-									<div>Teléfono</div>
-									<div class="ml-3" id="telefono"></div>
-								</li>
-								<li class="d-flex flex-row align-items-start justify-content-start">
-									<div>Correo</div>
-									<div class="ml-3" id="correo"></div>
-								</li>
-							</ul>
-						</div>
-						<div class="contact_social">
-							<ul class="d-flex flex-row align-items-center justify-content-start">
-								
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row google_map_row">
-				<div class="col">
-					
-					<!-- Contact Map -->
+                <div class="map">
+                  <div id="google_map" class="google_map">
+                    <div class="map_container">
+                      <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.310410663248!2d-77.0590967849407!3d-12.090889246015424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c9ab36130f99%3A0x1e52998b28ff6e5!2sSmart%20Oficinas%20Boutique%20-%20Magdalena%20del%20Mar%20%7C%20Abril%20Grupo%20Inmobiliario!5e0!3m2!1ses-419!2spe!4v1647533451260!5m2!1ses-419!2spe" width="950" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe> -->
+                      <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.3085925684986!2d-77.05914098498054!3d-12.091013891437838!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c9ab49c9e19b%3A0xc524c6e7501e10f4!2sDe%20La%20Roca%20De%20Vergallo%20493%2C%20Magdalena%20del%20Mar%2015076!5e0!3m2!1ses-419!2spe!4v1656379457360!5m2!1ses-419!2spe"
+                        width="100%"
+                        height="550"
+                        style="border: 0"
+                        allowfullscreen=""
+                        loading="lazy"
+                      ></iframe>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-					<div class="contact_map">
+      <footer-element></footer-element>
+    </div>
 
-						<!-- Google Map -->
-						
-						<div class="map">
-							<div id="google_map" class="google_map">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="styles/bootstrap-4.1.2/popper.js"></script>
+    <script src="styles/bootstrap-4.1.2/bootstrap.min.js"></script>
+    <script src="plugins/greensock/TweenMax.min.js"></script>
+    <script src="plugins/greensock/TimelineMax.min.js"></script>
+    <script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
+    <script src="plugins/greensock/animation.gsap.min.js"></script>
+    <script src="plugins/greensock/ScrollToPlugin.min.js"></script>
+    <script src="plugins/easing/easing.js"></script>
+    <script src="plugins/parallax-js-master/parallax.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"
+      integrity="sha512-xIPqqrfvUAc/Cspuj7Bq0UtHNo/5qkdyngx6Vwt+tmbvTLDszzXM0G6c91LXmGrRx8KEPulT+AfOOez+TeVylg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="/admin/src/js/apis.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="/js/components.js"></script>
 
-								<div class="map_container">
-									<!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.310410663248!2d-77.0590967849407!3d-12.090889246015424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c9ab36130f99%3A0x1e52998b28ff6e5!2sSmart%20Oficinas%20Boutique%20-%20Magdalena%20del%20Mar%20%7C%20Abril%20Grupo%20Inmobiliario!5e0!3m2!1ses-419!2spe!4v1647533451260!5m2!1ses-419!2spe" width="950" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe> -->
-									<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.3085925684986!2d-77.05914098498054!3d-12.091013891437838!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c9ab49c9e19b%3A0xc524c6e7501e10f4!2sDe%20La%20Roca%20De%20Vergallo%20493%2C%20Magdalena%20del%20Mar%2015076!5e0!3m2!1ses-419!2spe!4v1656379457360!5m2!1ses-419!2spe" width="100%" height="550" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-								</div>
-							</div>
-						</div>
-
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<footer-element></footer-element>
-</div>
-
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="styles/bootstrap-4.1.2/popper.js"></script>
-<script src="styles/bootstrap-4.1.2/bootstrap.min.js"></script>
-<script src="plugins/greensock/TweenMax.min.js"></script>
-<script src="plugins/greensock/TimelineMax.min.js"></script>
-<script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
-<script src="plugins/greensock/animation.gsap.min.js"></script>
-<script src="plugins/greensock/ScrollToPlugin.min.js"></script>
-<script src="plugins/easing/easing.js"></script>
-<script src="plugins/parallax-js-master/parallax.min.js"></script>
-<script
-src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"
-integrity="sha512-xIPqqrfvUAc/Cspuj7Bq0UtHNo/5qkdyngx6Vwt+tmbvTLDszzXM0G6c91LXmGrRx8KEPulT+AfOOez+TeVylg=="
-crossorigin="anonymous"
-referrerpolicy="no-referrer"
-></script>
-<script src="/admin/src/js/apis.js"></script>
-<script src="js/contact.js"></script>
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-23581568-13');
-</script>
-
-</body>
+      gtag("config", "UA-23581568-13");
+    </script>
+  </body>
 </html>

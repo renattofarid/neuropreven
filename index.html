@@ -20,7 +20,6 @@
 <link rel="stylesheet" href="css/style.css">
   <!--Icon-Font-->
   <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
-  <script src="components.js"></script>
 </head>
 <body>
 
@@ -109,33 +108,7 @@
 				<div class="col-lg-6 intro_col">
 					<div class="intro_form_container">
 						<div class="intro_form_title">Programa una Cita</div>
-						<form action="mailto:informes@neuropreven.com" class="intro_form" id="intro_form">
-							<div class="d-flex flex-row align-items-start justify-content-between flex-wrap">
-								<input type="text" class="intro_input" placeholder="Nombre" required="required">
-								<input type="email" class="intro_input" placeholder="E-mail" required="required">
-								<input type="tel" class="intro_input" placeholder="Movil" required="required">
-								<select class="intro_select intro_input" required>
-									<option disabled="" selected="" value="">Especialidad</option>
-									<option>Enfermedades cerebrovasculares</option>
-									<option>Demencias (Alzheimer, Vascular)</option>
-									<option>Enfermedades desmielinizantes (Esclerosis múltiple)</option>
-									<option>Enfermedades del movimiento (Parkinson)</option>
-									<option>Enfermedades neuromusculares</option>
-									<option>Epilepsias</option>
-									<option>Cefaleas</option>
-									<option>Trastornos del sueño</option>
-									<option>Neurología general</option>
-								</select>
-								<select class="intro_select intro_input" required="required">
-										<option disabled="" selected="" value="">Doctor</option>
-										<option>Dr. Danny Barrientos Iman</option>
-										<option>Dra. Yesenia Núñez Coronado</option>
-										
-									</select>
-								<!--<input type="text" id="datepicker" class="intro_input datepicker" placeholder="Día" required="required">-->
-							</div>
-							<button class="button button_1 intro_button trans_200">Separa tu Cita</button>
-						</form>
+						<appointment-form></appointment-form>
 					</div>
 				</div>
 
@@ -290,6 +263,7 @@
 <script src="plugins/parallax-js-master/parallax.min.js"></script>
 <script src="plugins/jquery-datepicker/jquery-ui.js"></script>
 <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js" defer></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script
 src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"
 integrity="sha512-xIPqqrfvUAc/Cspuj7Bq0UtHNo/5qkdyngx6Vwt+tmbvTLDszzXM0G6c91LXmGrRx8KEPulT+AfOOez+TeVylg=="
@@ -299,6 +273,7 @@ referrerpolicy="no-referrer"
 <script src="/admin/src/js/apis.js"></script>
 
 <script src="js/custom.js"></script>
+<script src="/js/components.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
 <script>
