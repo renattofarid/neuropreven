@@ -229,7 +229,7 @@
   }
   .home_text {
     font-size: 13px;
-    background-color: #d6eeffb0;
+    /* background-color: #d6eeffb0; */
     padding: 5px;
     border-radius: 10px;
   }

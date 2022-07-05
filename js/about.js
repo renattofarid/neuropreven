@@ -190,7 +190,9 @@ $(document).ready(function () {
         </div>`
       };
       extraContent.innerHTML = `
-                `+template+`</div>
+                `+template+`<div class="extra_text d-flex justify-content-center align-items-center mt-5">
+                <div class="button button_1 trans_200"><a href="#">Trabajamos con</a></div>
+              </div>`+`</div>
                 </div>
               </div>
             </div>

@@ -80,7 +80,7 @@ class MenuElement extends HTMLElement {
             <div class="menu_extra">
                 <div class="menu_link">Lun a Sáb: 8:00am - 9:00pm</div>
                 <div class="menu_link">+51 924 688 174</div>
-                <div class="menu_link"><a href="https://api.whatsapp.com/send?phone=51924688174&text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Neuropreven">Sacar una Cita</a></div>
+                <div class="menu_link"><a href="https://api.whatsapp.com/send?phone=51924688174&text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Neuropreven">Separa tu Cita</a></div>
             </div>
             <div class="social menu_social">
                 <ul class="d-flex flex-row align-items-center justify-content-start">
