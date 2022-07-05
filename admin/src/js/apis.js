@@ -1,5 +1,9 @@
 const stringImageTypes = {
   strings: {
+    doctor: {
+      canAdd: true,
+      label: "Doctor",
+    },
     specialties: {
       canAdd: true,
       label: "Especialidad",

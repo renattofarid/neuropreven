@@ -321,11 +321,11 @@ class AppointmentForm extends HTMLElement {
       });
       document.querySelector("#speciality").innerHTML = template;
 
-      const staff = await getStaff();
+      const staff = await getStrings("doctor");
       let template2 = `<option disabled selected value>Doctor</option>`;
       staff.forEach((element) => {
         template2 += `
-              <option value="${element.name}">${element.name}</option>
+              <option value="${element.content}">${element.content}</option>
               `;
       });
       document.querySelector("#doctor").innerHTML = template2;

@@ -109,6 +109,30 @@ export class MySidebar extends HTMLElement {
         >
       </li>
 
+      <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            href="#"
+            data-toggle="collapse"
+            data-target="#collapseFour"
+            aria-expanded="true"
+            aria-controls="collapseFour"
+          >
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Formulario de Citas</span>
+          </a>
+          <div
+            id="collapseFour"
+            class="collapse"
+            aria-labelledby="headingTwo"
+            data-parent="#accordionSidebar"
+          >
+            <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="/admin/strings.html?type=specialties">Especialidades</a>
+            <a class="collapse-item" href="/admin/strings.html?type=doctor">Doctores</a>
+          </div>
+        </li> 
+
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block" />
 
