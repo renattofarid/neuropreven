@@ -1,16 +1,15 @@
 class HeaderElement extends HTMLElement {
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+  }
 
-    connectedCallback(){
-        const homeActive = this.getAttribute('home');
-        const nosotrosActive = this.getAttribute('nosotros');
-        const serviciosActive = this.getAttribute('servicios');
-        const blogActive = this.getAttribute('blog');
-        const contactoActive = this.getAttribute('contacto');
-        this.innerHTML = 
-        `<header class="header trans_400">
+  connectedCallback() {
+    const homeActive = this.getAttribute("home");
+    const nosotrosActive = this.getAttribute("nosotros");
+    const serviciosActive = this.getAttribute("servicios");
+    const blogActive = this.getAttribute("blog");
+    const contactoActive = this.getAttribute("contacto");
+    this.innerHTML = `<header class="header trans_400">
                 <div class="header_content d-flex flex-row align-items-center jusity-content-start trans_400">
 
                 <!-- Logo -->
@@ -57,17 +56,16 @@ class HeaderElement extends HTMLElement {
                     <div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
                 </div>
             </div>
-        </header>`
-    }
+        </header>`;
+  }
 }
 
 class MenuElement extends HTMLElement {
-    constructor() {
-        super();
-    }
-    connectedCallback(){
-        this.innerHTML =
-        `<div class="menu_overlay trans_400"></div>
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    this.innerHTML = `<div class="menu_overlay trans_400"></div>
         <div class="menu trans_400">
             <div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
             <nav class="menu_nav">
@@ -91,20 +89,19 @@ class MenuElement extends HTMLElement {
                     <li><a href="https://www.facebook.com/Neuropreven-103701488876722"target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
                 </ul>
             </div>
-        </div>`
-    }
+        </div>`;
+  }
 }
 
 class StartSection extends HTMLElement {
-    constructor() {
-        super()
-    }
-    connectedCallback(){
-        const dataSource = this.getAttribute('data-src');
-        const homeTitle = this.getAttribute('home-title');
-        const homeText = this.getAttribute('home-text');
-        this.innerHTML = 
-        `<div class="home d-flex flex-column align-items-start justify-content-end">
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    const dataSource = this.getAttribute("data-src");
+    const homeTitle = this.getAttribute("home-title");
+    const homeText = this.getAttribute("home-text");
+    this.innerHTML = `<div class="home d-flex flex-column align-items-start justify-content-end">
             <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="${dataSource}" data-speed="0.8"></div>
             <div class="home_overlay"><img src="images/home_overlay.png" alt=""></div>
             <div class="home_container">
@@ -121,17 +118,16 @@ class StartSection extends HTMLElement {
                     </div>
                 </div>
             </div>
-        </div>`
-    }
+        </div>`;
+  }
 }
 
 class FooterElement extends HTMLElement {
-    constructor() {
-        super()
-    }
-    connectedCallback(){
-        this.innerHTML = 
-        `
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    this.innerHTML = `
         <div class="btn">
             <a href="https://api.whatsapp.com/send?phone=51924688174&text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Neuropreven" class="btn-wsp" target="_blank">
             <i class="fa fa-whatsapp icono"></i></a>
@@ -244,11 +240,92 @@ class FooterElement extends HTMLElement {
                 </div>			
             </div>
         </footer>
-        `
-    }
+        `;
+  }
 }
 
-window.customElements.define('header-element',HeaderElement);
-window.customElements.define('menu-element',MenuElement);
-window.customElements.define('start-section',StartSection);
-window.customElements.define('footer-element',FooterElement);
+class AppointmentForm extends HTMLElement {
+  constructor() {
+    super();
+    this.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const data = {
+        name: document.querySelector("#name").value,
+        email: document.querySelector("#email").value,
+        phone: document.querySelector("#phone").value,
+        speciality: document.querySelector("#speciality").value,
+        doctor: document.querySelector("#doctor").value,
+      };
+
+      postAppointment(data)
+        .then((data) => {
+          document.querySelector("#btnSubmitForm").disabled = true;
+          Swal.fire({
+            title: "Cita registrada!",
+            text: "Nos pondremos en contacto contigo en breve",
+            icon: "success",
+          });
+
+          document.querySelector("#name").value = "";
+          document.querySelector("#email").value = "";
+          document.querySelector("#phone").value = "";
+          document.querySelector("#speciality").value = "";
+          document.querySelector("#doctor").value = "";
+        })
+        .finally(() => {
+          document.querySelector("#btnSubmitForm").disabled = false;
+        });
+    });
+  }
+
+  connectedCallback() {
+    this.innerHTML = `
+  
+      <form class="intro_form" id="appointmentForm">
+          <div class="d-flex flex-row align-items-start justify-content-between flex-wrap">
+              <input id="name" type="text" class="intro_input" placeholder="Nombre" required="required">
+              <input id="email" type="email" class="intro_input" placeholder="E-mail" required="required">
+              <input id="phone" type="tel" class="intro_input" placeholder="Movil" required="required">
+              <select id="speciality" class="intro_select intro_input" required id="specialtiesSelect">
+                  
+              </select>
+              <select id="doctor" class="intro_select intro_input" required="required" id="staffSelect">
+                      
+                  </select>
+              <!--<input type="text" id="datepicker" class="intro_input datepicker" placeholder="Día" required="required">-->
+          </div>
+          <button id="btnSubmitForm" type="submit" class="button button_1 intro_button trans_200">Separa tu Cita</button>
+      </form> 
+  
+      `;
+
+    const loadForm = async () => {
+      const sp = await getStrings("specialties");
+      let template = `<option disabled selected value>Especialidad</option>`;
+      sp.forEach((element) => {
+        template += `
+              <option value="${element.content}">${element.content}</option>
+              `;
+      });
+      document.querySelector("#speciality").innerHTML = template;
+
+      const staff = await getStaff();
+      let template2 = `<option disabled selected value>Doctor</option>`;
+      staff.forEach((element) => {
+        template2 += `
+              <option value="${element.name}">${element.name}</option>
+              `;
+      });
+      document.querySelector("#doctor").innerHTML = template2;
+    };
+
+    loadForm();
+  }
+}
+
+window.customElements.define("header-element", HeaderElement);
+window.customElements.define("menu-element", MenuElement);
+window.customElements.define("start-section", StartSection);
+window.customElements.define("footer-element", FooterElement);
+window.customElements.define("appointment-form", AppointmentForm);

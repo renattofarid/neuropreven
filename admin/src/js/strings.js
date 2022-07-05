@@ -13,7 +13,16 @@ if (!querystring.includes("?type=")) {
   typeString = querystring.split("?type=")[1];
 }
 
-console.log({ typeString });
+const canAdd = stringImageTypes["strings"][typeString].canAdd;
+
+let defaultLabel = null;
+
+if (!canAdd) {
+  const buttonAdd = document.querySelector("#buttonAdd");
+  buttonAdd.remove();
+} else {
+  defaultLabel = stringImageTypes["strings"][typeString].label;
+}
 
 const loadData = async () => {
   const strings = await getStrings(typeString);
@@ -29,10 +38,15 @@ const loadData = async () => {
       {
         data: "id",
         title: "Acciones",
-        render: (data, type, row, meta) => `
-            <button class="btn btn-primary" onclick="edit('${row.id}')">Editar</button>
-            <!--<button class="btn btn-danger" onclick="remove('${row.id}')">Eliminar</button!-->
-        `,
+        render: (data, type, row, meta) => {
+          let template = `
+          <button class="btn btn-primary" onclick="edit('${row.id}')">Editar</button>
+          `;
+          if (canAdd) {
+            template += `<button class="btn btn-danger" onclick="remove('${row.id}')">Eliminar</button>`;
+          }
+          return template;
+        },
       },
     ],
   });
@@ -54,7 +68,7 @@ const edit = (id) => {
 };
 
 const remove = async (id) => {
-  await fbAxios.delete(`/services/${id}/.json`);
+  await fbAxios.delete(`/strings/${id}/.json`);
   window.location = `/admin/strings.html?type=${typeString}`;
 };
 
@@ -70,10 +84,11 @@ const save = async () => {
       type: typeString,
     });
   } else {
-    // const { data } = await fbAxios.post(`strings.json`, {
-    //   content,
-    //   type: typeString,
-    // });
+    const { data } = await fbAxios.post(`strings.json`, {
+      content,
+      label: defaultLabel,
+      type: typeString,
+    });
   }
   window.location = `/admin/strings.html?type=${typeString}`;
 };

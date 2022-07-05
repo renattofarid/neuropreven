@@ -59,7 +59,7 @@ const newRegister = () => {
   openModal();
 };
 
-const edit = (uid) => {
+const edit = (id) => {
   action = "put";
   globalRow = getRow(myDataTable.rows().data(), id);
   titleInput.value = globalRow.title;

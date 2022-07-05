@@ -1,3 +1,33 @@
+const stringImageTypes = {
+  strings: {
+    specialties: {
+      canAdd: true,
+      label: "Especialidad",
+    },
+    contact: {
+      canAdd: false,
+    },
+    about: {
+      canAdd: false,
+    },
+    welcome: {
+      canAdd: false,
+    },
+    slider: {
+      canAdd: false,
+    },
+  },
+  images: {
+    client: {
+      canAdd: true,
+      label: "Cliente",
+    },
+    slider: {
+      canAdd: false,
+    },
+  },
+};
+
 const fbAxios = axios.create({
   baseURL: `https://neuropreven-c74b9-default-rtdb.firebaseio.com`,
 });
@@ -25,6 +55,12 @@ const getServices = async () => {
 
   return changeToArray(data);
 };
+
+// const getSpecialties = async () => {
+//   const { data } = await fbAxios.get("specialties.json");
+
+//   return changeToArray2(data);
+// };
 
 const getStaff = async () => {
   const { data } = await fbAxios.get("staff.json");
@@ -58,6 +94,14 @@ const getImages = async (type) => {
   if (!type) return images;
 
   return images.filter((s) => s.type == type);
+};
+
+const postAppointment = async (body) => {
+  const { data } = await fbAxios.post(
+    "http://superbackend.xyz/api/new-email/neuropreven-appointment",
+    body
+  );
+  return data;
 };
 
 const changeToArray = (object = {}) => {

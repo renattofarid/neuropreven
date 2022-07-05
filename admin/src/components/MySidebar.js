@@ -48,7 +48,7 @@ export class MySidebar extends HTMLElement {
             <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="/admin/strings.html?type=slider">Textos de Sliders</a>
             <a class="collapse-item" href="/admin/images.html?type=slider">Imágenes de Sliders</a>
-            <a class="collapse-item" href="/admin/strings.html?type=welcome">Welcome</a>
+            <!--a class="collapse-item" href="/admin/strings.html?type=welcome">Welcome</a--!>
             <a class="collapse-item" href="/admin/testimonios.html">Testimonios</a>
             <a class="collapse-item" href="/admin/home-servicios.html">Servicios</a>
           </div>
@@ -99,6 +99,13 @@ export class MySidebar extends HTMLElement {
         <a class="nav-link" href="/admin/strings.html?type=contact">
           <i class="fas fa-fw fa-cog"></i>
           <span>Contacto</span></a
+        >
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/strings.html?type=specialties">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Especialidades</span></a
         >
       </li>
 
