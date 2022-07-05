@@ -301,11 +301,11 @@ class AppointmentForm extends HTMLElement {
       `;
 
     const loadForm = async () => {
-      const sp = await getSpecialties();
+      const sp = await getStrings("specialties");
       let template = `<option disabled selected value>Especialidad</option>`;
       sp.forEach((element) => {
         template += `
-              <option value="${element.value}">${element.value}</option>
+              <option value="${element.content}">${element.content}</option>
               `;
       });
       document.querySelector("#speciality").innerHTML = template;
