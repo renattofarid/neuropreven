@@ -176,20 +176,20 @@ $(document).ready(function () {
 	}).then(() => {
     getImages('client') .then((result) => {
       let extraContent = document.querySelector('#extraContent');
-      let template = ``;
-      for (const img of result) {
-        template += 
-        `<div class="extra_text d-flex justify-content-center align-items-center">
-          <img src="${img.image}" width="280" height="120">
-        </div>`
-      };
-      extraContent.innerHTML = `<div class="extra">
+      let template = `<div class="extra">
       <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/extra.jpg" data-speed="0.8"></div>
       <div class="container">
         <div class="row">
           <div class="col">
             <div class="extra_container d-flex flex-row align-items-start justify-content-end">
-              <div class="extra_content" id="extraContent">
+              <div class="extra_content" id="extraContent">`;
+      for (const img of result) {
+        template += 
+        `<div class="extra_text d-flex justify-content-center align-items-center">
+          <img src="${img.image}" width="280">
+        </div>`
+      };
+      extraContent.innerHTML = `
                 `+template+`</div>
                 </div>
               </div>
