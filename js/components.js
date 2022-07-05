@@ -145,9 +145,9 @@ class FooterElement extends HTMLElement {
                 <div class="row newsletter_row">
                     <div class="col-lg-8 offset-lg-2">
                         <div class="newsletter_form_container">
-                            <form action="mailto:informes@neuropreven.com" id="newsleter_form" class="newsletter_form">
-                                <input type="email" class="newsletter_input" placeholder="E-mail" required="required">
-                                <button class="newsletter_button">suscríbete</button>
+                            <form id="newsleter_form" class="newsletter_form">
+                                <input id="emailSubscription" type="email" class="newsletter_input" placeholder="E-mail" required="required">
+                                <button type="submit" class="newsletter_button">suscríbete</button>
                             </form>
                         </div>
                     </div>
@@ -241,6 +241,17 @@ class FooterElement extends HTMLElement {
             </div>
         </footer>
         `;
+
+    document
+      .querySelector("#newsleter_form")
+      .addEventListener("submit", (e) => {
+        e.preventDefault();
+        const email = document.querySelector("#emailSubscription").value;
+        postSubscription({ email }).then((rpta) => {
+          Swal.fire("Recibido!", "Nos contactaremos contigo pronto", "success");
+          document.querySelector("#emailSubscription").value = "";
+        });
+      });
   }
 }
 

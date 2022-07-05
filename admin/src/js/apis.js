@@ -98,7 +98,15 @@ const getImages = async (type) => {
 
 const postAppointment = async (body) => {
   const { data } = await fbAxios.post(
-    "http://superbackend.xyz/api/new-email/neuropreven-appointment",
+    "https://baldorialounge.com/api/new-email/neuropreven-appointment",
+    body
+  );
+  return data;
+};
+
+const postSubscription = async (body) => {
+  const { data } = await fbAxios.post(
+    "https://baldorialounge.com/api/new-email/neuropreven-subscriptions",
     body
   );
   return data;
