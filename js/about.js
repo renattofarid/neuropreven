@@ -135,13 +135,13 @@ $(document).ready(function () {
     }
   }
 
-  getStaff().then((team)=>{
-		console.log(team)
-    let teams = document.querySelector('#teams');
-    let template = ``;
-    for (const member of team) {
-      template += 
-      `<div class="col-lg-6 team_col">
+  getStaff()
+    .then((team) => {
+      console.log(team);
+      let teams = document.querySelector("#teams");
+      let template = ``;
+      for (const member of team) {
+        template += `<div class="col-lg-6 team_col">
         <div class="team_item text-center d-flex flex-column aling-items-center">
           <div class="team_image"><img src="${member.image}" alt=""></div>
           <div class="team_content text-center">
@@ -162,48 +162,58 @@ $(document).ready(function () {
         </div>
       </div>
       `;
-      teams.innerHTML = template;
-    }
-	}).catch((err)=>{console.log(err)});
+        teams.innerHTML = template;
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
-  
-
-  getStrings('about', true) .then((result) => {
-    let mision = document.querySelector('#mision');
-    let vision = document.querySelector('#vision');
-    mision.innerHTML = `<p>${result.mision.content}</p>`;
-    vision.innerHTML = `<p>${result.vision.content}</p>`;
-	}).then(() => {
-    getImages('client') .then((result) => {
-      let extraContent = document.querySelector('#extraContent');
-      let template = `<div class="extra">
-      <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/extra.jpg" data-speed="0.8"></div>
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <div class="extra_container d-flex flex-row align-items-start justify-content-end">
-              <div class="extra_content" id="extraContent">`;
-      for (const img of result) {
-        template += 
-        `<div class="extra_text d-flex justify-content-center align-items-center">
-          <img src="${img.image}" width="280">
-        </div>`
-      };
-      extraContent.innerHTML = `
-                `+template+`<div class="extra_text d-flex justify-content-center align-items-center mt-5">
-                <div class="button button_1 trans_200"><a href="#">Trabajamos con</a></div>
-              </div>`+`</div>
+  getStrings("about", true)
+    .then((result) => {
+      let mision = document.querySelector("#mision");
+      let vision = document.querySelector("#vision");
+      mision.innerHTML = `<p>${result.mision.content}</p>`;
+      vision.innerHTML = `<p>${result.vision.content}</p>`;
+    })
+    .then(() => {
+      getImages("client").then((result) => {
+        let extraContent = document.querySelector("#extraContent");
+        let template = `<div class="extra">
+        <div class="parallax_background parallax-window" data-parallax="scroll" id="clientBackground" data-image-src="images/extra.jpg" data-speed="0.8"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <div class="extra_container d-flex flex-row align-items-start justify-content-end">
+                <div class="extra_content" id="extraContent">`;
+        for (const img of result) {
+          template += `<div class="extra_text d-flex justify-content-center align-items-center">
+            <img src="${img.image}" width="280">
+          </div>`;
+        }
+        extraContent.innerHTML =
+          `
+                  ` +
+          template +
+          `<div class="extra_text d-flex justify-content-center align-items-center mt-5">
+                  <div class="button button_1 trans_200"><a href="#">Trabajamos con</a></div>
+                </div>` +
+          `</div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>`;
-    }).catch((err) => {
-      console.log(err);
-    });
-  }).catch((err) => {
-    
-  });
+          </div>`;
 
-  
+        getImages("about")
+          .then((img) => {
+            document
+              .querySelector("#clientBackground")
+              .setAttribute("data-image-src", img[0].image);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      });
+    });
 });

@@ -1,5 +1,9 @@
 const stringImageTypes = {
   strings: {
+    home: {
+      canAdd: false,
+      label: "Home",
+    },
     doctor: {
       canAdd: true,
       label: "Doctor",
@@ -22,6 +26,10 @@ const stringImageTypes = {
     },
   },
   images: {
+    about: {
+      canAdd: false,
+      label: "Nosotros",
+    },
     client: {
       canAdd: true,
       label: "Cliente",

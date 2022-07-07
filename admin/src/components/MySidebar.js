@@ -48,9 +48,10 @@ export class MySidebar extends HTMLElement {
             <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="/admin/strings.html?type=slider">Textos de Sliders</a>
             <a class="collapse-item" href="/admin/images.html?type=slider">Imágenes de Sliders</a>
-            <!--a class="collapse-item" href="/admin/strings.html?type=welcome">Welcome</a--!>
+            <a class="collapse-item" href="/admin/strings.html?type=welcome">Welcome</a>
             <a class="collapse-item" href="/admin/testimonios.html">Testimonios</a>
             <a class="collapse-item" href="/admin/home-servicios.html">Servicios</a>
+            <a class="collapse-item" href="/admin/strings.html?type=home">Textos</a>
           </div>
         </li> 
       
@@ -73,9 +74,10 @@ export class MySidebar extends HTMLElement {
             data-parent="#accordionSidebar"
           >
             <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="/admin/strings.html?type=about">Textos</a>
+            <a class="collapse-item" href="/admin/staff.html">Staff</a>
+            <a class="collapse-item" href="/admin/strings.html?type=about">Textos</a>
               <a class="collapse-item" href="/admin/images.html?type=client">Clientes</a>
-              <a class="collapse-item" href="/admin/staff.html">Staff</a>
+              <a class="collapse-item" href="/admin/images.html?type=welcome">Imágenes</a>
             </div>
           </div>
         </li> 

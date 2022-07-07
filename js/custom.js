@@ -186,16 +186,25 @@ $(document).ready(function () {
 	 */
   getStrings("slider", true)
     .then((result2) => {
-      let sliderDescription = result2.sliderDescription.content;
-      let sliderSubtitle = result2.sliderSubtitle.content;
-      let sliderTitle = result2.sliderTitle.content;
-      return { sliderDescription, sliderSubtitle, sliderTitle };
+      console.log({ result2 });
+
+      const texts = [];
+
+      for (let i = 0; i < 3; i++) {
+        texts.push({
+          title: result2[`sliderTitle${i + 1}`].content,
+          subtitle: result2[`sliderSubtitle${i + 1}`].content,
+          description: result2[`sliderDescription${i + 1}`].content,
+        });
+      }
+      return texts;
     })
-    .then(({ sliderDescription, sliderSubtitle, sliderTitle }) => {
+    .then((texts) => {
+      console.log({ texts });
       getImages("slider").then((result1) => {
         let homeSliderOwl = document.querySelector("#homeSliderOwl");
         let template = ``;
-        for (const res1 of result1) {
+        for (let [i, res1] of result1.entries()) {
           template += `<div class="owl-item">
 				<div class="background_image" style="background-image:url(${res1.image})"></div>
 				<div class="home_container">
@@ -203,10 +212,10 @@ $(document).ready(function () {
 						<div class="row">
 							<div class="col">
 								<div class="home_content">
-									<div class="home_subtitle">${sliderTitle}</div>
-									<div class="home_title">${sliderSubtitle}</div>
+									<div class="home_subtitle">${texts[i].title}</div>
+									<div class="home_title">${texts[i].subtitle}</div>
 									<div class="home_text">
-										<p>${sliderDescription}</p>
+										<p>${texts[i].description}</p>
 									</div>
 									<div class="home_buttons d-flex flex-row align-items-center justify-content-start">
 										<div class="button button_1 trans_200"><a href="#">+info</a></div>
@@ -254,6 +263,21 @@ $(document).ready(function () {
         initHomeSlider();
       });
     });
+
+  getStrings("home", true).then((strings) => {
+    console.log(strings);
+    document.querySelector("#welcomeHeader").textContent =
+      strings.welcomeHeader.content;
+    document.querySelector("#welcomeTitle").textContent =
+      strings.welcomeTitle.content;
+    document.querySelector("#welcomeDescription").textContent =
+      strings.welcomeDescription.content;
+    document.querySelector("#whyHeader").textContent =
+      strings.whyHeader.content;
+    document.querySelector("#whyTitle").textContent = strings.whyTitle.content;
+    document.querySelector("#whyDescription").textContent =
+      strings.whyDescription.content;
+  });
 
   getTestimonials()
     .then((result) => {

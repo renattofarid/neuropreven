@@ -40,7 +40,7 @@ const loadData = async () => {
         render: (data, type, row, meta) => {
           if (!row.image) return "";
           return `
-            <img src="${row.image}" alt="${row.label}" class="img-fluid" width="100px"/>
+            <img src="${row.image}" alt="${row.label}" class="img-fluid" width="500px"/>
         `;
         },
       },
