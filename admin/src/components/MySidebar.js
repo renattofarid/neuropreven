@@ -77,7 +77,7 @@ export class MySidebar extends HTMLElement {
             <a class="collapse-item" href="/admin/staff.html">Staff</a>
             <a class="collapse-item" href="/admin/strings.html?type=about">Textos</a>
               <a class="collapse-item" href="/admin/images.html?type=client">Clientes</a>
-              <a class="collapse-item" href="/admin/images.html?type=welcome">Imágenes</a>
+              <a class="collapse-item" href="/admin/images.html?type=about">Imágenes</a>
             </div>
           </div>
         </li> 
