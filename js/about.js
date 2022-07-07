@@ -40,7 +40,6 @@ $(document).ready(function () {
   });
 
   initMenu();
-  initMilestones();
 
   /* 
 
@@ -135,13 +134,45 @@ $(document).ready(function () {
     }
   }
 
+  getStrings("welcome", true)
+    .then((result) => {
+      let milestoneRow = document.querySelector("#milestoneRow");
+      let template = `<!-- Milestone -->
+      <div class="col-md-3 milestone_col">
+        <div class="milestone">
+          <div class="milestone_counter" data-end-value="+${result.patientsTreated.content}" data-sign-before="+">0</div>
+          <div class="milestone_text">${result.patientsTreated.label}</div>
+        </div>
+      </div>
+
+      <!-- Milestone -->
+      <div class="col-md-3 milestone_col">
+        <div class="milestone">
+          <div class="milestone_counter" data-end-value="+${result.studiesOne.content}"data-sign-before="+">0</div>
+          <div class="milestone_text">${result.studiesOne.label}</div>
+        </div>
+      </div>
+
+      <!-- Milestone -->
+      <div class="col-md-3 milestone_col">
+        <div class="milestone">
+          <div class="milestone_counter" data-end-value="+${result.studiesTwo.content}"data-sign-before="+">0</div>
+          <div class="milestone_text">${result.studiesTwo.label}</div>
+        </div>
+      </div>`;
+      milestoneRow.innerHTML = template;
+    })
+    .then(() => {
+      initMilestones();
+    });
+
   getStaff()
     .then((team) => {
       console.log(team);
       let teams = document.querySelector("#teams");
       let template = ``;
       for (const member of team) {
-        template += `<div class="col-lg-6 team_col">
+        template += `<div class="col-lg-6 team_col mb-4">
         <div class="team_item text-center d-flex flex-column aling-items-center">
           <div class="team_image"><img src="${member.image}" alt=""></div>
           <div class="team_content text-center">

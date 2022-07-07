@@ -125,6 +125,12 @@ class StartSection extends HTMLElement {
 class FooterElement extends HTMLElement {
   constructor() {
     super();
+    getStrings('contact', true) .then((result) => {
+		let direccion = document.querySelector('#direccionEmpresa');
+		direccion.innerHTML = `${result.direction.content}`;
+        console.log(result.direction.content);
+
+	})
   }
   connectedCallback() {
     this.innerHTML = `
@@ -192,10 +198,10 @@ class FooterElement extends HTMLElement {
                             <div class="footer_location">
                                 <div class="footer_title">Nuestros Locales</div>
                                 <ul class="locations_list">
-                                    <li>
-                                        <div class="location_text">Edificio Smart Boutique</div>
-                                        <div class="location_text">Avenida De La Roca De Vergallo 493 Oficina 509.</div>
-                                        <div class="location_text">Magdalena del Mar</div>
+                                    <li class="location_text" id="direccionEmpresa">
+                                        <!-- <div class="location_text">Edificio Smart Boutique</div>
+                                        // <div class="location_text">Avenida De La Roca De Vergallo 493 Oficina 509.</div>
+                                        // <div class="location_text">Magdalena del Mar</div> -->
                                     </li>
                                     
                                 </ul>
