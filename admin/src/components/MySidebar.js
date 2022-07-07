@@ -103,13 +103,6 @@ export class MySidebar extends HTMLElement {
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="/admin/strings.html?type=specialties">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Especialidades</span></a
-        >
-      </li>
-
-      <li class="nav-item">
           <a
             class="nav-link collapsed"
             href="#"
