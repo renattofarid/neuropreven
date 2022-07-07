@@ -45,7 +45,6 @@ $(document).ready(function () {
   // initHomeSlider();
   initDatePicker();
   initSelect();
-  initMilestones();
 
   /* 
 
@@ -184,6 +183,37 @@ $(document).ready(function () {
 		getStrings ->  about,contact,slider,welcome
 		getImages -> slider, client
 	 */
+  getStrings('welcome', true) .then((result) => {
+    let milestoneRow = document.querySelector('#milestoneRow');
+    let template = 
+    `<!-- Milestone -->
+      <div class="col-md-4 milestone_col">
+        <div class="milestone">
+          <div class="milestone_counter" data-end-value="+${result.patientsTreated.content}" data-sign-before="+">0</div>
+          <div class="milestone_text">${result.patientsTreated.label}</div>
+        </div>
+      </div>
+
+      <!-- Milestone -->
+      <div class="col-md-4 milestone_col">
+        <div class="milestone">
+          <div class="milestone_counter" data-end-value="+${result.studiesOne.content}"data-sign-before="+">0</div>
+          <div class="milestone_text">${result.studiesOne.label}</div>
+        </div>
+      </div>
+
+      <!-- Milestone -->
+      <div class="col-md-4 milestone_col">
+        <div class="milestone">
+          <div class="milestone_counter" data-end-value="+${result.studiesTwo.content}"data-sign-before="+">0</div>
+          <div class="milestone_text">${result.studiesTwo.label}</div>
+        </div>
+      </div>`;
+      milestoneRow.innerHTML = template;
+  }).then(() => {
+      initMilestones();
+  });
+
   getStrings("slider", true)
     .then((result2) => {
       let sliderDescription = result2.sliderDescription.content;
